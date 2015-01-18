@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="css/idealGasModel.css">
+
+        <title>Model idealnog plina</title>
+    </head>
+
+    <body>
+        <div class="ui left vertical inverted labeled icon sidebar menu">
+            <a href="home.html" class="item">
+                <i class="home icon"></i> Početna
+            </a>
+            <a href="documentation.html" class="item">
+                <i class="book icon"></i> Dokumentacija
+            </a>
+        </div>
+
+        <div class="ui blue huge launch right attached fixed button">
+            <i class="content icon"></i>
+            <span class="text">Menu</span>
+        </div>
+
+        <div class="pusher">
+            <div class="ui page equal width grid">
+                <div class="row">
+                    <div class="column">
+                        <h1 class="ui dividing center aligned main header">Model idealnog plina</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <div class="ui basic segment variables">
+                            <h2 class="ui dividing header">Uvod</h2>
+                            <p class="lead">
+                                U ovom radu pokušat ćemo kreirati model kretanja idealnog plina. Potrebno je isprogramirati
+                                animaciju kretanja takvog plina u zadanim tehnologijama, a one su JavaScript i HTML5. Osnova
+                                naše animacije su čestice idealong plina koje se gibaju u nekakvom ograničenom prostoru.
+                                Prikazat ćemo međudjelovanje i „ponašanje“ tih čestica. Prvo što je potrebno napraviti je opisati
+                                idealni plin i njegove fizikalne zakone i zatim način na koji smo te zakone pretočili u programski
+                                kod kako bi dobili vjeran model.
+                            </p>
+                            <p class="lead">
+                                Kako bi objasnili model idealnog plina, što je i tema našeg projekta, polazimo upravo od te
+                                pretpostavke da su atomi, odnosno molekule, osnovne jedinke od kojih je izgrađena materija.
+                                Molekule se u tijelima gibaju, privlače ili odbijaju. Problem gibanja velikog broja čestica riješit ćemo
+                                lakše što je slabije njihovo međudjelovanje. Dakako, utjecaj međudjelovanja opada s porastom
+                                udaljenosti među molekulama. Za razliku od tekućina i krutih tijela, u plinovima je gustoća materije
+                                manja pa je razumljivo da je molekulska teorija postigla najveće uspjehe upravo u objašnjenju
+                                svojstava plinova.
+                            </p>
+                            <h2 class="ui dividing header">Idealni plin</h2>
+                            <p class="lead">
+                                Molekule u plinovima kreću se velikim brzinama i međusobno se sudaraju. Na velikim se
+                                udaljenostima molekule privlače, a na malim se udaljenostima one odbijaju i sile su mnogo jače.
+                            </p>
+                            <p class="lead">
+                                Idealni plin je model u kojem pretpostavljamo da međumolekulske sile nemaju veći utjecaj na
+                                ponašanje plina. 1 mol nekog plina sadrži Avogadrov
+                                broj<sup data-content="Avogadrov broj govori koliko ima atoma ugljika u 1 molu ugljika."
+                                data-variation="inverted">1</sup> molekula, <code>6.02214129(27) &times; 10<sup>23</sup>.
+                                </code> Dakle, idealni plin je teorijski model plina sastavljenog od mnoštva gibajućih molekula u
+                                kojem zanemarujemo njihovo međudjelovanje. Također između njih ne postoje Van der Waalsove
+                                sile<sup data-content="Van der Waalsova sile su slabe privlačne sile između dviju molekula, koja se
+                                javlja zbog interakcije električnih dipola. Može dovesti do stvaranja stabilnih, ali slabo povezanih
+                                dimernih molekula ili skupina." data-variation="inverted">2</sup> pa se idealni plin ne može prevesti
+                                u tekuće ili čvrsto stanje. Idealni plin je teorijski koncept, a realni plinovi mu se približavaju tek pri niskim
+                                tlakovima i visokim temperaturama. Granu fizike koja se bavi proučavanjem sustava od velikog broja
+                                čestica nazivamo statistička fizika.
+                            </p>
+                            <p class="lead">
+                                Koncept idealnog plina je jednostavan iz razloga što ispunjava zakon idealnog plina, tj. može se izraziti
+                                jednostavnom jednadžbom stanja.
+                            </p>
+                            <h2 class="ui dividing header">Klasični termodinamički idealni plin</h2>
+                            <p class="lead">
+                                Termodinamička svojstva idealnog plina mogu se opisati jednadžbom stanja idealnog plina:
+                                <div class="ui center aligned piled segment">
+                                    <code><i>P &times; V = n &times; R &times; T</i></code>
+                                    <br><br>
+                                    <code>P - pritisak</code>
+                                    <br>
+                                    <code>V - volumen</code>
+                                    <br>
+                                    <code>n - broj molova</code>
+                                    <br>
+                                    <code>R - konstanta</code>
+                                    <br>
+                                    <code>T - temperatura</code>
+                                </div>
+                            </p>
+                            <h2 class="ui dividing header">Svojstva idealnog plina</h2>
+                            <div class="ui list">
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    broj čestica vrlo velik
+                                </p>
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    čestice se gibaju neovisno, a jedina interakcija među njima su sudari
+                                </p>
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    udari čestica međusobno i čestica sa stijenkama su savršeno elastični (očuvanje količine gibanja)
+                                </p>
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    međučestične udaljenosti zanemarive
+                                </p>
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    gibanje čestica nasumično/kaotično, bez preferiranih smjerova
+                                </p>
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    gibanje velikim brzinama, a raspodjela brzina je izotropna
+                                </p>
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    čestice su rijetko raspoređene pa je ukupni obujam čestica zanemarivo malen u  usporedbi s obujmom posude
+                                </p>
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    za molekule vrijedi Newtonovska mehanika (čvrste kuglice bez unutarnje strukture)
+                                </p>
+                                <p class="lead item">
+                                    <i class="checkmark icon"></i>
+                                    zanemaruje se gibanje atoma unutar tih molekula
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="ui basic center aligned inverted blue footer segment">
+                    <p>&copy; 2015 Luka Matijević (<a href="mailto:lumatijev@foi.hr">lumatijev@foi.hr</a>),
+                        Matija Kruljac (<a href="mailto:makruljac@foi.hr">makruljac@foi.hr</a>)
+                    </p>
+                    <p>FOI - računalna grafika - seminarski i projektni zadatak</p>
+                    <a href=""><i class="massive github icon"></i></a>
+                </div>
+            </footer>
+        </div>
+
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="js/semantic.min.js"></script>
+        <script type="text/javascript" src="js/d3.min.js"></script>
+        <script type="text/javascript" src="js/collisionCheck.js"></script>
+        <script type="text/javascript" src="js/idealGasModel.js"></script>
+    </body>
+</html>
