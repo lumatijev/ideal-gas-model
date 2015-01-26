@@ -11,7 +11,7 @@
 
     <body>
         <div class="ui left vertical inverted labeled icon sidebar menu">
-            <a href="home.html" class="item">
+            <a href="index.html" class="item">
                 <i class="home icon"></i> Početna
             </a>
             <a href="documentation.html" class="item">
@@ -30,7 +30,7 @@
                     <div class="column">
                         <h1 class="ui dividing center aligned main header">Model idealnog plina</h1>
                         <p class="lead">Konstanta je vezana uz mjernu jedinicu pritiska i volumena. Izračunava se broj molova s obzirom na dane varijable.</p>
-                        <p class="lead">Mijenjajte varijable kako bi se izračun ponovio.</p>
+                        <p class="lead">Mijenjajte varijable kako bi se izračun ponovio. Možete mijenjati broj molova i temperaturu.</p>
                     </div>
                 </div>
                 <div class="row">
@@ -47,7 +47,7 @@
                                 <div class="field">
                                     <label>Pritisak (Pa)</label>
                                     <div class="ui right labeled input">
-                                        <input id="pressure" type="text" placeholder="Unesite pritisak (Pa)" value="101325">
+                                        <input id="pressure" type="text" placeholder="Unesite pritisak (Pa)" value="101325" readonly="readonly">
                                         <div class="ui label">
                                             <p>Pa</p>
                                         </div>
@@ -56,7 +56,7 @@
                                 <div class="field">
                                     <label>Volumen (m^3)</label>
                                     <div class="ui right labeled input">
-                                        <input id="volume" type="text" placeholder="Unesite volumen (m^3)" value="1">
+                                        <input id="volume" type="text" placeholder="Unesite volumen (m^3)" value="1" readonly="readonly">
                                         <div class="ui label">
                                             <p>m^3</p>
                                         </div>
@@ -65,7 +65,7 @@
                                 <div class="field">
                                     <label>Broj molova (mol)</label>
                                     <div class="ui right labeled input">
-                                        <input id="numberOfMoles" type="text" placeholder="Izračun broja molova" value="" readonly="readonly">
+                                        <input id="numberOfMoles" type="text" placeholder="Izračun broja molova" value="40">
                                         <div class="ui label">
                                             <p>mol</p>
                                         </div>

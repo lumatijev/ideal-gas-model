@@ -25,21 +25,25 @@ $('.launch.button').hover(function() {
     $(this).width("10px");
 });
 
-var formula = function(p, v, r, t) {
-    return (p.val() * v.val()) / (r.val() * (parseFloat(t.val()) + parseFloat(273.15)).toFixed(2));
+var formula = function(n, v, r, t) {
+    return ((n.val() * r.val() * (parseFloat(t.val()) + parseFloat(273.15)).toFixed(2)) / v.val());
 };
 
 var calculate = function() {
-    numberOfMoles.val(formula(pressure, volume, constant, temperature));
+    pressure.val(formula(numberOfMoles, volume, constant, temperature));
 };
 
-$('#pressure, #volume, #temperature').change(function() {
+$('#numberOfMoles, #temperature').change(function() {
     calculate();
     d3.selectAll('.svg > *').remove();
     calculationChanged();
 });
 
 var calculationChanged = function() {
+    if(parseFloat(temperature.val()) < parseFloat(-273.15)) {
+        temperature.val(-273.15);
+    }
+
     var nodes = d3.range(Math.round(numberOfMoles.val())).map(function(d, i) {
         var radius = 5,
             x = Math.random() * $('.svg').width() + radius,
@@ -49,8 +53,8 @@ var calculationChanged = function() {
             mass: radius,
             x: x,
             y: y,
-            px: x + Math.random() * 2,
-            py: y + Math.random() * 2
+            px: x + Math.random() * ((parseFloat(temperature.val()) + parseFloat(273.15)).toFixed(2) / 10),
+            py: y + Math.random() * ((parseFloat(temperature.val()) + parseFloat(273.15)).toFixed(2) / 10),
         };
     });
 
